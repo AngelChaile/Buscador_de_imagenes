@@ -23,16 +23,16 @@ const cargarImagenes = async () => {
         <div class="card">
             <img src="${previewURL}" alt="${tags}" class="card-img-top">
             <div class="card-body">
-                <p class="card-text">${likes} Me Gusta</p>
-                <p class="card-text">${views} vistas</p>
+                <p class="card-text text-success">${likes} <strong>Me gusta</strong> &#128077;</p>
+                <p class="card-text text-info">${views} <strong>Vistas</strong> &#128064;</p>
             </div>
             
-            <div class="card-footer">
+            <div class="card-footer text-center">
               <a
               href="${largeImageURL}"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn btn-primary btn-block">
+              class="btn btn-outline-primary btn-block">
               Ver Imagen</a>
             </div>
         </div>
@@ -46,7 +46,7 @@ const cargarImagenes = async () => {
                                 </div>`;
   setTimeout(() => {
     divListadoImagenes.innerHTML = imagenesHTML;
-  }, 3000);
+  }, 1000);
 };
 
 const mostrarError = (elemento, mensaje) => {
