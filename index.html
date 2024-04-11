@@ -14,8 +14,38 @@
   </head>
   <body>
     <div class="container">
-      <div id="arriba" class="px-2 py-5 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 mt-3">
-        <p class="lead text-center fs-2">Buscador de Imágenes</p>
+      <div class="px-2 py-5 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 mt-3 text-center">
+        <p class="light fs-2">Buscador de Imágenes</p>
+      
+        <form>
+          <div class="row justify-content-center">
+      
+            <div class="col-md-8 pb-2">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="busqueda"
+                  placeholder="Busca una imágen..."
+                />
+                <button
+                  class="btn btn-lg btn-primary"
+                  type="button"
+                  onclick="cargarImagenes()"
+                >
+                  Buscar
+                </button>
+              </div>
+            </div>
+      
+          </div>
+          <div class="error" id="msj-error"></div>
+        </form>
+      </div>
+      
+      
+      <!-- <div id="arriba" class="px-2 py-5 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 mt-3">
+        <p class="light text-center fs-2">Buscador de Imágenes</p>
 
         <form>
           <div class="row">
@@ -32,7 +62,7 @@
             <div class="form-group col-md-4">
               <input
                 type="button"
-                class="btn btn-lg btn-danger btn-block"
+                class="btn btn-lg btn-primary btn-block"
                 value="Buscar"
                 onclick="cargarImagenes()"
               />
@@ -41,7 +71,7 @@
           </div>
           <div class="error" id="msj-error"></div>
         </form>
-      </div>
+      </div> -->
 
       <div class="row justify-content-center">
 
@@ -57,5 +87,6 @@
       </div>
       
     </div>
+
   </body>
 </html>

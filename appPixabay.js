@@ -20,7 +20,7 @@ const cargarImagenes = async () => {
 
     imagenesHTML += `
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-        <div class="card">
+        <article class="card">
             <img src="${previewURL}" alt="${tags}" class="card-img-top">
             <div class="card-body">
                 <p class="card-text text-success">${likes} <strong>Me gusta</strong> &#128077;</p>
@@ -35,7 +35,7 @@ const cargarImagenes = async () => {
               class="btn btn-outline-primary btn-block">
               Ver Imagen</a>
             </div>
-        </div>
+        </article>
       </div>
       `;
   });
