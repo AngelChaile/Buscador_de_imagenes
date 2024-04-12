@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const botonBuscar = document.querySelector("#boton-buscar");
+  const inputBusqueda = document.querySelector("#busqueda");
+
+  botonBuscar.addEventListener("click", cargarImagenes);
+
+  inputBusqueda.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      cargarImagenes();
+      inputBusqueda.value = "";
+    }
+  });
+});
+
 var paginaActual = 1;
 var totalPaginas = 0;
 
@@ -20,7 +35,7 @@ const cargarImagenes = async () => {
 
   let imagenes = resultado.hits;
 
-  // Cambio de atributo src por data-src para utilizar una librería de lazy loading como lazysizes para cargar las imágenes cuando el usuario las vea.
+  // Cambio de atributo src por data-src para utilizar la librería lazysizes para cargar las imágenes cuando el usuario las vea.
   const imagenesHTML = imagenes
     .map((imagen) => {
       const { largeImageURL, likes, previewURL, tags, views } = imagen;
@@ -39,19 +54,20 @@ const cargarImagenes = async () => {
       target="_blank"
       rel="noopener noreferrer"
       class="btn btn-outline-primary btn-block">
+     
       Ver Imagen</a>
-    </footer>
-      </article>
-    </div>
-  `;
+      </footer>
+        </article>
+      </div>
+    `;
     })
     .join("");
 
   divListadoImagenes = document.querySelector("#listadoImagenes");
   //SPINNER
   divListadoImagenes.innerHTML = `<div style="text-align:center">
-                                    <img src="loading.gif" width=300 height=300>
-                                </div>`;
+                                      <img src="loading.gif" width=300 height=300>
+                                  </div>`;
 
   totalPaginas = Math.ceil(resultado.totalHits / imagenesPorPagina);
 
@@ -59,21 +75,21 @@ const cargarImagenes = async () => {
     paginaActual === 1
       ? ``
       : `
-    <button
-    type="button"
-    class="btn bg-success-subtle bg-succes-subtle border-success"
-    onclick="paginaAnterior()">
-    Anterior </button>`;
+      <button
+      type="button"
+      class="btn bg-success-subtle bg-succes-subtle border-success"
+      onclick="paginaAnterior()">
+      Anterior </button>`;
 
   let pagSiguiente =
     paginaActual === totalPaginas
       ? ``
       : `
-    <button
-    type="button"
-    class="btn bg-success-subtle bg-succes-subtle border-success"
-    onclick="paginaSiguiente()">
-    Siguiente </button>`;
+      <button
+      type="button"
+      class="btn bg-success-subtle bg-succes-subtle border-success"
+      onclick="paginaSiguiente()">
+      Siguiente </button>`;
 
   setTimeout(() => {
     divListadoImagenes.innerHTML = imagenesHTML;
