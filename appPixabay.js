@@ -125,7 +125,7 @@ const paginaSiguiente = () => {
 
 const mostrarError = (elemento, mensaje) => {
   divError = document.querySelector(elemento);
-  divError.innerHTML = `<p class="alert alert-primary mt-3s">${mensaje}</p>`;
+  divError.innerHTML = `<p class="alert alert-primary mt-3">${mensaje}</p>`;
   setTimeout(() => {
     divError.innerHTML = ``;
   }, 2000);
