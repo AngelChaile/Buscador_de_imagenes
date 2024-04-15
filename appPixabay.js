@@ -11,6 +11,17 @@ document.addEventListener("DOMContentLoaded", () => {
       inputBusqueda.value = "";
     }
   });
+
+  // Emojis de búsqueda
+  const emojisBusqueda = document.querySelectorAll(".emoji");
+
+  emojisBusqueda.forEach((emoji) => {
+    emoji.addEventListener("click", () => {
+      const terminoBusqueda = emoji.dataset.busqueda;
+      inputBusqueda.value = terminoBusqueda;
+      cargarImagenes();
+    });
+  });
 });
 
 var paginaActual = 1;
@@ -37,29 +48,21 @@ const cargarImagenes = async () => {
 
   // Cambio de atributo src por data-src para utilizar la librería lazysizes para cargar las imágenes cuando el usuario las vea.
   const imagenesHTML = imagenes
-    .map((imagen) => {
-      const { largeImageURL, likes, previewURL, tags, views } = imagen;
+    .map(({ largeImageURL, likes, previewURL, tags, views }) => {
       return `
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
       <article class="card">
         <img data-src="${previewURL}" alt="${tags}" class="card-img-top lazyload">
         <div class="card-body">
-        <p class="card-text text-success">${likes} <strong>Me gusta</strong> &#128077;</p>
-        <p class="card-text text-info-emphasis">${views} <strong>Vistas</strong> &#128064;</p>
+          <p class="card-text text-success">${likes} <strong>Me gusta</strong> &#128077;</p>
+          <p class="card-text text-info-emphasis">${views} <strong>Vistas</strong> &#128064;</p>
+        </div>
+        <footer class="card-footer text-center">
+          <a href="${largeImageURL}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-block">Ver Imagen</a>
+        </footer>
+      </article>
     </div>
-    
-    <footer class="card-footer text-center">
-      <a
-      href="${largeImageURL}"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn btn-outline-primary btn-block">
-     
-      Ver Imagen</a>
-      </footer>
-        </article>
-      </div>
-    `;
+  `;
     })
     .join("");
 
@@ -121,7 +124,7 @@ const paginaSiguiente = () => {
 
 const mostrarError = (elemento, mensaje) => {
   divError = document.querySelector(elemento);
-  divError.innerHTML = `<p class="alert alert-primary">${mensaje}</p>`;
+  divError.innerHTML = `<p class="alert alert-primary mt-3">${mensaje}</p>`;
   setTimeout(() => {
     divError.innerHTML = ``;
   }, 2000);
