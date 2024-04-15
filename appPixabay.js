@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Agregar event listeners para los emojis de búsqueda
+  // Emojis de búsqueda
   const emojisBusqueda = document.querySelectorAll(".emoji");
 
   emojisBusqueda.forEach((emoji) => {
@@ -48,8 +48,7 @@ const cargarImagenes = async () => {
 
   // Cambio de atributo src por data-src para utilizar la librería lazysizes para cargar las imágenes cuando el usuario las vea.
   const imagenesHTML = imagenes
-    .map((imagen) => {
-      const { largeImageURL, likes, previewURL, tags, views } = imagen;
+    .map(({ largeImageURL, likes, previewURL, tags, views }) => {
       return `
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
       <article class="card">
